@@ -35,6 +35,21 @@ export interface IChainable {
 }
 
 /**
+ * Interface for objects that can have catch handlers attached
+ */
+export interface ICatchable {
+  /**
+   * Add a recovery handler for this state
+   *
+   * When a particular error occurs, execution will continue at the given state.
+   *
+   * @param handler The state to continue at
+   * @param props Additional properties for the catch behavior
+   */
+  addCatch(handler: IChainable, props?: CatchProps): ICatchable;
+}
+
+/**
  * Values allowed in the retrier JitterStrategy field
  */
 export enum JitterType {
